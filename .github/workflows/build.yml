@@ -11,24 +11,17 @@ on:
 
 jobs:
   build-windows:
-    runs-permissions:
-  contents: write
-
-on: windows-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
-          python-versipermissions:
-  contents: write
-
-on: "3.11"
+          python-version: "3.11"
 
       - name: Abhängigkeiten installieren
-        run: |
-          pip install pyinstaller tkinterdnd2
+        run: pip install pyinstaller tkinterdnd2
 
       - name: ffmpeg herunterladen
         run: |
@@ -48,7 +41,6 @@ on: "3.11"
             --windowed `
             --name "audio2mp3" `
             --add-binary "ffmpeg.exe;." `
-            --add-data "ffmpeg.exe;." `
             --icon NONE `
             audio2mp3_gui.py
         shell: pwsh
@@ -82,20 +74,14 @@ on: "3.11"
             4. MP3 liegt im gleichen Ordner wie die Quelldatei
 
   build-macos:
-    runs-permissions:
-  contents: write
-
-on: macos-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
 
       - name: Python einrichten
         uses: actions/setup-python@v5
         with:
-          python-versipermissions:
-  contents: write
-
-on: "3.11"
+          python-version: "3.11"
 
       - name: Abhängigkeiten installieren
         run: pip install pyinstaller tkinterdnd2
