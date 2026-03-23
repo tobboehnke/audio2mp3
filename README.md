@@ -1,92 +1,35 @@
 # audio2mp3
 
-Portabler Audio-Konverter — wandelt m4a, aac, wav, flac, ogg, opus, wma in MP3 um.
+Audiodateien in MP3 umwandeln — per Doppelklick, ohne Installation.
 
-**Kein Admin nötig.** ffmpeg wird beim ersten Start automatisch in `~/.audio2mp3/` heruntergeladen.
+## Download
 
-## Voraussetzungen
+👉 **[Aktuelle Version herunterladen](https://github.com/tobboehnke/audio2mp3/releases/latest)**
 
-- Python 3.8+ (ohne Admin installierbar via [python.org](https://www.python.org/downloads/) → "Add to PATH" aktivieren)
-- Keine weiteren Pakete nötig — nur die Python-Standardbibliothek
+- **Windows:** `audio2mp3.exe` herunterladen und doppelklicken
+- **macOS:** `audio2mp3-macos.zip` herunterladen, entpacken, App starten
 
-## Installation
+Kein Installieren. Kein Admin. Kein Terminal.
 
-```bash
-# Repository klonen (oder ZIP herunterladen)
-git clone https://github.com/tobboehnke/audio2mp3.git
-cd audio2mp3
-```
+## So funktioniert es
 
-Fertig. Beim ersten Start wird ffmpeg automatisch heruntergeladen.
-
-## Nutzung
-
-```bash
-# Eine Datei konvertieren
-python audio2mp3.py aufnahme.m4a
-
-# Mehrere Dateien
-python audio2mp3.py datei1.m4a datei2.wav datei3.aac
-
-# Ganzen Ordner konvertieren (inkl. Unterordner)
-python audio2mp3.py ~/Downloads/musik/
-
-# Höhere Qualität (320 kbps)
-python audio2mp3.py podcast.m4a --bitrate 320k
-
-# In anderen Ordner konvertieren
-python audio2mp3.py aufnahme.m4a --output ~/Podcasts/
-
-# Vorhandene Dateien überschreiben
-python audio2mp3.py *.m4a --overwrite
-```
+1. `audio2mp3.exe` herunterladen
+2. Doppelklicken
+3. Audiodateien ins Fenster ziehen — oder „Dateien auswählen" klicken
+4. MP3 liegt danach im gleichen Ordner wie die Quelldatei
 
 ## Unterstützte Formate
 
-| Format | Beschreibung |
-|--------|-------------|
-| `.m4a` | Apple Audio (iTunes, iPhone-Aufnahmen) |
-| `.aac` | Advanced Audio Coding |
-| `.wav` | Unkomprimiertes Audio |
-| `.flac` | Verlustfreies Audio |
-| `.ogg` | Ogg Vorbis |
-| `.opus` | Opus Audio (Telegram, WhatsApp) |
-| `.wma` | Windows Media Audio |
-| `.mp4` | Video → nur Audio extrahieren |
-| `.webm` | WebM → nur Audio extrahieren |
+m4a, aac, wav, flac, ogg, opus, wma, mp4, webm → **mp3**
 
-## Optionen
+## Qualitätsstufen
 
-| Option | Standard | Beschreibung |
-|--------|----------|-------------|
-| `--bitrate` / `-b` | `192k` | MP3-Bitrate: 128k, 192k, 256k, 320k |
-| `--output` / `-o` | Gleicher Ordner | Ausgabeordner |
-| `--overwrite` | Nein | Vorhandene MP3s überschreiben |
-| `--ffmpeg` | Auto | Eigenen ffmpeg-Pfad angeben |
+Im Programm wählbar:
+- **128 kbps** — klein, für Sprache gut genug
+- **192 kbps** — Standard, gutes Gleichgewicht
+- **256 kbps** — hohe Qualität
+- **320 kbps** — maximal
 
-## Wo landet ffmpeg?
+---
 
-Beim ersten Start wird ffmpeg heruntergeladen nach:
-- **Windows:** `C:\Users\<Name>\.audio2mp3\ffmpeg\ffmpeg.exe`
-- **macOS/Linux:** `~/.audio2mp3/ffmpeg/ffmpeg`
-
-Das passiert nur einmal. Danach wird die lokale Kopie verwendet.
-
-Falls ffmpeg bereits im System-PATH vorhanden ist, wird es direkt genutzt (kein Download).
-
-## Tipps
-
-**iPhone-Sprachmemos (m4a) konvertieren:**
-```bash
-python audio2mp3.py ~/Downloads/Sprachmemo.m4a --bitrate 128k
-```
-
-**Alle m4a-Dateien im Downloads-Ordner auf einmal:**
-```bash
-python audio2mp3.py ~/Downloads/ --output ~/Musik/mp3/
-```
-
-**Podcast-Archiv mit maximaler Qualität:**
-```bash
-python audio2mp3.py ~/Podcasts/ --bitrate 320k --overwrite
-```
+*Enthält ffmpeg (LGPL). Quellcode: [audio2mp3_gui.py](audio2mp3_gui.py)*
